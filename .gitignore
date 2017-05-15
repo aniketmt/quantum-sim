@@ -1,7 +1,3 @@
 *.pyx
 *.pyc
-try_Rabi_driven.py
-try1_resonance.py
-try2_dissipation.py
-try3_single_qubit.py
 .idea/

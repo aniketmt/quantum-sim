@@ -14,13 +14,13 @@ failed = False
 
 
 def fit(x, y):
-
+    print '\nFitting..'
     amp, ic = heightguess(y)
     l = periodguess(y, x, ic)
 
     a, b, c, d, e = gradmin(amp, l, ic, x, y, 0)
 
-    print "\n\nFINAL VALUES: \n a:", a, "  b:", b, "  c:", c, "  d:", d, "  e:", e
+    # print "\n\nFINAL VALUES: \n a:", a, "  b:", b, "  c:", c, "  d:", d, "  e:", e
 
     fity = (a * np.sin(d * x) + b * np.cos(d * x)) * np.exp(-c * x) + e
     # fity2 = np.sqrt(a**2 + b**2) * np.exp(-c * x) + e  # * np.sin(d*0 + np.arctan(b/a))
@@ -50,7 +50,7 @@ def gradmin(a, d, e, x, y, trycount):
     old_ss = new_ss + 1
     stepnum = 0
 
-    print "INITIAL VALUES: \n print a:", a, "  b:", b, "  c:", c, "  d:", d, "  e:", e, "\n"
+    # print "INITIAL VALUES: \n a:", a, "  b:", b, "  c:", c, "  d:", d, "  e:", e, "\n"
     finished = False
 
     while math.fabs(old_ss - new_ss) > threshold:
@@ -72,8 +72,8 @@ def gradmin(a, d, e, x, y, trycount):
         new_ss = np.sum(np.power(func(a, b, c, d, e, x, y), 2))
 
         # print progress every 1500 steps
-        if stepnum % 1500 == 0:
-            print "a:", a, "  b:", b, "  c:", c, "  d:", d, "  e:", e, "  Var:", new_ss/len(x)
+        # if stepnum % 1500 == 0:
+            # print "  Var: {0}\r".format(new_ss/len(x))
 
         # restart the minimization with higher period if minimizing to wrong well
         if stepnum/1500 > 20 and new_ss/len(x) > 2500:
@@ -103,6 +103,7 @@ def gradmin(a, d, e, x, y, trycount):
         finished = True
 
     if finished:
+        print "Var: {0}\n".format(new_ss/len(x))
         return a, b, c, d, e
 
 

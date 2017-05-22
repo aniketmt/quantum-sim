@@ -1,3 +1,8 @@
 *.pyx
 *.pyc
 .idea/
+check_t_pi.py
+check_tomo.py
+decay_check.py
+fidelity_check.py
+qubit_in_cavity.py

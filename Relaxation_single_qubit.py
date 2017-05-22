@@ -45,8 +45,8 @@ def qubit_integrate(w, theta, gamma1, gamma2, psi0, tlist):
 
 w = 1.0 * 2 * pi  # qubit angular frequency
 theta = 0.2 * pi  # qubit angle from sigma_z axis (toward sigma_x axis)
-gamma1 = 0.0      # qubit relaxation rate
-gamma2 = 0.2      # qubit dephasing rate
+gamma1 = 0.1      # qubit relaxation rate
+gamma2 = 0.0      # qubit dephasing rate
 n_th = 0          # zero temperature (average rate of thermal excitation)
 
 
@@ -70,7 +70,7 @@ sphere.point_color = ['r']
 sphere.vector_color = ['b']
 sphere.size = [4, 4]
 sphere.font_size = 14
-sphere.add_vectors([sin(theta), 0, cos(theta)])  # direction of the eigen-vector
+sphere.add_vectors([sin(theta), 0, cos(theta)])  # direction of the eigenvector
 sphere.show()
 
 # Plot Sz-value graph

@@ -93,7 +93,7 @@ fig, axes = plt.subplots(1, 1)
 
 axes.plot(tlist, n_q)
 axes.set_ylim([0.0, 1.1])
-axes.set_xlabel('Time')
+axes.set_xlabel('Time [ns]')
 axes.set_ylabel('Occupation probability')
 axes.set_title('Excitation probability of qubit')
 

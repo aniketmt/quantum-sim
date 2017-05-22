@@ -64,13 +64,25 @@ tlist = linspace(0, 5.0 * 2 * pi / A, 500)
 # Hamiltonian
 #
 
-if not use_rwa:
-    H0 = - delta / 2.0 * sx - eps0 / 2.0 * sz
-    H1 = - A * sx
-    # define the time-dependence of the hamiltonian using the list-string format
-    args = {'w': w}
-    Ht = [H0, [H1, "sin(w*t)"]]
+# # For interaction picture
+# def H_func(t, args):
+#     Ht = sin(w*t)
+#
+#     H_0_exp_m = (-1j * t * H0).expm().data
+#     H_0_exp_p = (1j * t * H0).expm().data
+#
+#     H_MW_int = H_0_exp_m * Ht * H_0_exp_p
+#     return H_MW_int
 
+
+H0 = - delta / 2.0 * sx - eps0 / 2.0 * sz
+H1 = - A * sx
+
+# define the time-dependence of the hamiltonian using the list-string format
+args = {'w': w}
+Ht = [H0, [H1, "sin(w*t)"]]
+
+if not use_rwa:
     output = mesolve(Ht, psi0, tlist, cops, [sm.dag() * sm], args)
 
 else:

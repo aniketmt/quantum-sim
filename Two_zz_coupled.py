@@ -348,4 +348,5 @@ def visualize_bloch(state_1, state_2):
     sphere.show()
 
 
-print measure_bell_state()
+fid = measure_bell_state()
+print '\nFidelity : ', fid

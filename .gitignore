@@ -6,3 +6,4 @@ check_tomo.py
 decay_check.py
 fidelity_check.py
 qubit_in_cavity.py
+two_qubit_v2.py
